@@ -9,6 +9,7 @@
 DEFAULT_WORKFLOW="https://raw.githubusercontent.com/ai-dock/comfyui/main/config/workflows/flux-comfyui-example.json"
 
 APT_PACKAGES=(
+  "ffmpeg"
     #"package-1"
     #"package-2"
 )
@@ -19,34 +20,114 @@ PIP_PACKAGES=(
 )
 
 NODES=(
-    
+"https://github.com/11cafe/comfyui-workspace-manager"
+"https://github.com/BadCafeCode/execution-inversion-demo-comfyui"
+"https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved"
+"https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"
+"https://github.com/WASasquatch/was-node-suite-comfyui"
+"https://github.com/chrisgoringe/cg-use-everywhere"
+"https://github.com/city96/ComfyUI-GGUF"
+"https://github.com/cubiq/ComfyUI_IPAdapter_plus"
+"https://github.com/cubiq/ComfyUI_essentials"
+"https://github.com/dmarx/ComfyUI-Keyframed"
+"https://github.com/hayden-fr/ComfyUI-Image-Browsing"
+"https://github.com/Fannovel16/comfyui_controlnet_aux"
+"https://github.com/jags111/efficiency-nodes-comfyui"
+"https://github.com/liusida/ComfyUI-Login"
+"https://github.com/ltdrdata/ComfyUI-Impact-Pack"
+"https://github.com/ltdrdata/ComfyUI-Inspire-Pack"
+"https://github.com/ltdrdata/ComfyUI-Manager"
+"https://github.com/pythongosssss/ComfyUI-Custom-Scripts"
+"https://github.com/rnbwdsh/ComfyUI-LatentWalk.git"
+"https://github.com/twri/sdxl_prompt_styler"
+"https://github.com/XLabs-AI/x-flux-comfyui"
+# disabled: python eval node
+# "https://github.com/WASasquatch/ASTERR"
 )
 
 CHECKPOINT_MODELS=(
+"https://huggingface.co/stabilityai/stable-diffusion-3-medium/resolve/main/sd3_medium_incl_clips_t5xxlfp16.safetensors"
+"https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors"
+"https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors"
 )
 
 CLIP_MODELS=(
-    "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
-    "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors"
+"https://huggingface.co/lodestones/stable-diffusion-3-medium/resolve/4a708bd3d18c10253247f8660cd4ffae6cd63bf1/stable-diffusion-3-medium/text_encoders/clip_g.safetensors"
+"https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors"
+"https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors"
 )
 
 UNET_MODELS=(
+"https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q5_0.gguf"
+"https://huggingface.co/city96/FLUX.1-schnell-gguf/resolve/main/flux1-schnell-Q5_0.gguf"
 )
 
 VAE_MODELS=(
+"https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors"
+"https://raw.githubusercontent.com/madebyollin/taesd/main/taesdxl_decoder.pth"
+"https://raw.githubusercontent.com/madebyollin/taesd/main/taesdxl_encoder.pth"
+"https://raw.githubusercontent.com/madebyollin/taesd/main/taesd3_decoder.pth"
+"https://raw.githubusercontent.com/madebyollin/taesd/main/taesd3_encoder.pth"
 )
 
 LORA_MODELS=(
+# sdxl loras
+"https://huggingface.co/shiroppo/sd_xl_turbo_lora/resolve/main/sd_xl_turbo_lora_v1-64dim.safetensors"
+"https://huggingface.co/ByteDance/Hyper-SD/resolve/main/Hyper-SDXL-2steps-lora.safetensors"
+"https://huggingface.co/ByteDance/Hyper-SD/blob/main/Hyper-SDXL-4steps-lora.safetensors"
+"https://huggingface.co/ByteDance/Hyper-SD/resolve/main/Hyper-SDXL-8steps-lora.safetensors"
+"https://huggingface.co/ByteDance/SDXL-Lightning/resolve/main/sdxl_lightning_8step_lora.safetensors"
+"https://huggingface.co/ByteDance/SDXL-Lightning/resolve/main/sdxl_lightning_4step_lora.safetensors"
+"https://huggingface.co/ByteDance/SDXL-Lightning/resolve/main/sdxl_lightning_2step_lora.safetensors"
+
+# sdxl Pixel Art XL, 3D rendering style, xl_more_art-full
+"https://civitai.com/api/download/models/135931?type=Model&format=SafeTensor"
+"https://civitai.com/api/download/models/703107?type=Model&format=SafeTensor"
+"https://civitai.com/api/download/models/152309?type=Model&format=SafeTensor"
+
+"https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl_lora.safetensors"
+"https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors"
+
+# flux loras
+"https://huggingface.co/XLabs-AI/flux-lora-collection/resolve/main/art_lora_comfy_converted.safetensors"
+"https://huggingface.co/XLabs-AI/flux-lora-collection/resolve/main/realism_lora_comfy_converted.safetensors"
+"https://huggingface.co/XLabs-AI/flux-lora-collection/resolve/main/mjv6_lora_comfy_converted.safetensors"
+"https://huggingface.co/XLabs-AI/flux-lora-collection/resolve/main/disney_lora_comfy_converted.safetensors"
 )
 
 ESRGAN_MODELS=(
-    "https://huggingface.co/ai-forever/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth"
-    "https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4x_foolhardy_Remacri.pth"
-    "https://huggingface.co/Akumetsu971/SD_Anime_Futuristic_Armor/resolve/main/4x_NMKD-Siax_200k.pth"
+"https://huggingface.co/ai-forever/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth"
+"https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4x_foolhardy_Remacri.pth"
+"https://huggingface.co/Akumetsu971/SD_Anime_Futuristic_Armor/resolve/main/4x_NMKD-Siax_200k.pth"
 )
 
 CONTROLNET_MODELS=(
+"https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/flux-depth-controlnet_v2.safetensors"
+"https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/flux-canny-controlnet_v2.safetensors"
+"https://huggingface.co/XLabs-AI/flux-controlnet-collections/resolve/main/flux-hed-controlnet.safetensors"
 )
+
+# for rename, add :::new_name
+CLIP_VISION_MODELS=(
+"https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors:::CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"
+"https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors:::CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors"
+"https://huggingface.co/openai/clip-vit-large-patch14/resolve/main/model.safetensors:::CLIP-ViT-Large-14.safetensors"
+)
+
+IPADAPTER_MODELS=(
+"https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl.safetensors"
+"https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors"
+"https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors"
+"https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors"
+
+"https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl.bin"
+"https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl.bin"
+"https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl.bin"
+"https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl_unnorm.bin"
+
+"https://huggingface.co/XLabs-AI/flux-ip-adapter/blob/main/flux-ip-adapter.safetensors"
+)
+
 
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
@@ -56,16 +137,6 @@ function provisioning_start() {
     fi
     source /opt/ai-dock/etc/environment.sh
     source /opt/ai-dock/bin/venv-set.sh comfyui
-
-    # Get licensed models if HF_TOKEN set & valid
-    if provisioning_has_valid_hf_token; then
-        UNET_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors")
-        VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors")
-    else
-        UNET_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/flux1-schnell.safetensors")
-        VAE_MODELS+=("https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors")
-        sed -i 's/flux1-dev\.safetensors/flux1-schnell.safetensors/g' /opt/ComfyUI/web/scripts/defaultGraph.js
-    fi
 
     provisioning_print_header
     provisioning_get_apt_packages
@@ -93,6 +164,12 @@ function provisioning_start() {
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/esrgan" \
         "${ESRGAN_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/storage/stable_diffusion/models/ipadapter" \
+        "${IPADAPTER_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/storage/stable_diffusion/models/clip_vision" \
+        "${CLIP_VISION_MODELS[@]}"
     provisioning_print_end
 }
 
@@ -210,10 +287,17 @@ function provisioning_has_valid_civitai_token() {
 function provisioning_download() {
     if [[ -n $HF_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
         auth_token="$HF_TOKEN"
-    elif 
+    elif
         [[ -n $CIVITAI_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
         auth_token="$CIVITAI_TOKEN"
     fi
+
+    if [[ $1 == *":::"* ]]; then
+        # Append the second part to $2 and cut $1 to everything before :::
+        $2="$2/$(echo "$1" | awk -F':::' '{print $2}')"
+        $1="$(echo "$1" | awk -F':::' '{print $1}')"
+    fi
+
     if [[ -n $auth_token ]];then
         wget --header="Authorization: Bearer $auth_token" -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
     else
