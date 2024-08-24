@@ -49,6 +49,7 @@ CHECKPOINT_MODELS=(
 "https://huggingface.co/stabilityai/stable-diffusion-3-medium/resolve/main/sd3_medium_incl_clips_t5xxlfp16.safetensors"
 "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors"
 "https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/resolve/main/sd_xl_refiner_1.0.safetensors"
+"https://huggingface.co/guoyww/animatediff/resolve/main/mm_sdxl_v10_beta.ckpt"
 )
 
 CLIP_MODELS=(
@@ -68,6 +69,8 @@ VAE_MODELS=(
 "https://raw.githubusercontent.com/madebyollin/taesd/main/taesdxl_encoder.pth"
 "https://raw.githubusercontent.com/madebyollin/taesd/main/taesd3_decoder.pth"
 "https://raw.githubusercontent.com/madebyollin/taesd/main/taesd3_encoder.pth"
+"https://raw.githubusercontent.com/madebyollin/taesd/raw/main/taef1_decoder.pth"
+"https://raw.githubusercontent.com/madebyollin/taesd/raw/main/taef1_encoder.pth"
 )
 
 LORA_MODELS=(
@@ -112,6 +115,7 @@ CLIP_VISION_MODELS=(
 "https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors:::CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"
 "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors:::CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors"
 "https://huggingface.co/openai/clip-vit-large-patch14/resolve/main/model.safetensors:::CLIP-ViT-Large-14.safetensors"
+"https://huggingface.co/laion/CLIP-ViT-L-14-laion2B-s32B-b82K/resolve/main/open_clip_pytorch_model.safetensors:::CLIP-ViT-L-14-laion2B-s32B-b82K.safetensors"
 )
 
 IPADAPTER_MODELS=(
