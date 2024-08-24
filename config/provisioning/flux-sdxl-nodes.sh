@@ -10,6 +10,7 @@ DEFAULT_WORKFLOW="https://raw.githubusercontent.com/ai-dock/comfyui/main/config/
 
 APT_PACKAGES=(
   "ffmpeg"
+  "git"
     #"package-1"
     #"package-2"
 )
@@ -22,6 +23,7 @@ PIP_PACKAGES=(
 NODES=(
 "https://github.com/11cafe/comfyui-workspace-manager"
 "https://github.com/BadCafeCode/execution-inversion-demo-comfyui"
+"https://github.com/crystian/ComfyUI-Crystools"
 "https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved"
 "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite"
 "https://github.com/WASasquatch/was-node-suite-comfyui"
@@ -64,7 +66,10 @@ UNET_MODELS=(
 )
 
 VAE_MODELS=(
-"https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors"
+"https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors"
+)
+
+VAE_APPROX_MODELS=(
 "https://raw.githubusercontent.com/madebyollin/taesd/main/taesdxl_decoder.pth"
 "https://raw.githubusercontent.com/madebyollin/taesd/main/taesdxl_encoder.pth"
 "https://raw.githubusercontent.com/madebyollin/taesd/main/taesd3_decoder.pth"
@@ -128,10 +133,11 @@ IPADAPTER_MODELS=(
 "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl.bin"
 "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl.bin"
 "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl_unnorm.bin"
-
-"https://huggingface.co/XLabs-AI/flux-ip-adapter/blob/main/flux-ip-adapter.safetensors"
 )
 
+OTHERS=(
+"https://huggingface.co/XLabs-AI/flux-ip-adapter/resolve/main/flux-ip-adapter.safetensors:::xlabs/ipadapters/flux-ip-adapter.safetensors"
+)
 
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
@@ -174,6 +180,12 @@ function provisioning_start() {
     provisioning_get_models \
         "${WORKSPACE}/storage/stable_diffusion/models/clip_vision" \
         "${CLIP_VISION_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/storage/stable_diffusion/models/vae_approx" \
+        "${VAE_APPROX_MODELS[@]}"
+    provisioning_get_models \
+        "${WORKSPACE}/storage/stable_diffusion/models/other" \
+        "${OTHERS[@]}"
     provisioning_print_end
 }
 
@@ -289,23 +301,24 @@ function provisioning_has_valid_civitai_token() {
 
 # Download from $1 URL to $2 file path
 function provisioning_download() {
-    if [[ -n $HF_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
-        auth_token="$HF_TOKEN"
-    elif
-        [[ -n $CIVITAI_TOKEN && $1 =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
-        auth_token="$CIVITAI_TOKEN"
+    local url="$1" # Use local variable for storing the URL
+    local file_path="$2" # Use local variable for storing the file path
+
+    if [[ -n $HF_TOKEN && $url =~ ^https://([a-zA-Z0-9_-]+\.)?huggingface\.co(/|$|\?) ]]; then
+        auth_token="$HF_TOKEN" # Use a local variable for storing the authentication token
+    elif [[ -n $CIVITAI_TOKEN && $url =~ ^https://([a-zA-Z0-9_-]+\.)?civitai\.com(/|$|\?) ]]; then
+        auth_token="$CIVITAI_TOKEN" # Use a local variable for storing the authentication token
     fi
 
-    if [[ $1 == *":::"* ]]; then
-        # Append the second part to $2 and cut $1 to everything before :::
-        $2="$2/$(echo "$1" | awk -F':::' '{print $2}')"
-        $1="$(echo "$1" | awk -F':::' '{print $1}')"
+    if [[ $url == *":::"* ]]; then
+        file_path="${file_path}/$(echo "$url" | awk -F':::' '{print $2}')" # Append the second part to $2 and cut $1 to everything before :::
+        url="$(echo "$url" | awk -F':::' '{print $1}')" # Cut $1 to everything before :::
     fi
 
-    if [[ -n $auth_token ]];then
-        wget --header="Authorization: Bearer $auth_token" -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
+    if [[ -n $auth_token ]]; then
+        wget --header="Authorization: Bearer $auth_token" -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -O "$file_path" "$url" & # Use the new variables for storing the URL and file path
     else
-        wget -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$2" "$1"
+        wget -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -O "$file_path" "$url" & # Use the new variables for storing the URL and file path
     fi
 }
 
