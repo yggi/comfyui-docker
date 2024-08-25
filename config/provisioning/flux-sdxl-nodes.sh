@@ -63,6 +63,7 @@ CLIP_MODELS=(
 UNET_MODELS=(
 "https://huggingface.co/city96/FLUX.1-dev-gguf/resolve/main/flux1-dev-Q5_0.gguf"
 "https://huggingface.co/city96/FLUX.1-schnell-gguf/resolve/main/flux1-schnell-Q5_0.gguf"
+"https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8.safetensors"
 )
 
 VAE_MODELS=(
@@ -92,6 +93,14 @@ LORA_MODELS=(
 "https://civitai.com/api/download/models/135931?type=Model&format=SafeTensor"
 "https://civitai.com/api/download/models/703107?type=Model&format=SafeTensor"
 "https://civitai.com/api/download/models/152309?type=Model&format=SafeTensor"
+# dreamshaper, juggernaut, lelo / lego
+"https://civitai.com/api/download/models/182209?type=Model&format=SafeTensor"
+"https://civitai.com/api/download/models/131991?type=Model&format=SafeTensor"
+"https://civitai.com/api/download/models/318915?type=Model&format=SafeTensor"
+# voxel, hands, texta
+"https://civitai.com/api/download/models/128609?type=Model&format=SafeTensor"
+"https://civitai.com/api/download/models/471794?type=Model&format=SafeTensor"
+"https://civitai.com/api/download/models/249521?type=Model&format=SafeTensor"
 
 "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl_lora.safetensors"
 "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors"
