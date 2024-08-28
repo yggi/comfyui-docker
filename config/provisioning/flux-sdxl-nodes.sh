@@ -89,6 +89,10 @@ LORA_MODELS=(
 "https://huggingface.co/ByteDance/SDXL-Lightning/resolve/main/sdxl_lightning_4step_lora.safetensors"
 "https://huggingface.co/ByteDance/SDXL-Lightning/resolve/main/sdxl_lightning_2step_lora.safetensors"
 
+# ipadapter lora
+"https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl_lora.safetensors"
+"https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors"
+
 # sdxl Pixel Art XL, 3D rendering style, xl_more_art-full
 "https://civitai.com/api/download/models/135931?type=Model&format=SafeTensor"
 "https://civitai.com/api/download/models/703107?type=Model&format=SafeTensor"
