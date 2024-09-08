@@ -330,7 +330,7 @@ function provisioning_download() {
     fi
 
     if [[ -n $auth_token ]]; then
-        wget --header="Authorization: Bearer $auth_token" -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -O "$file_path" "$url" & # Use the new variables for storing the URL and file path
+        wget --header="Authorization: Bearer $auth_token" -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -P "$file_path" "$url" & # Use the new variables for storing the URL and file path
     else
         wget -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -O "$file_path" "$url" & # Use the new variables for storing the URL and file path
     fi
