@@ -155,6 +155,7 @@ OTHERS=(
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
 
 function provisioning_start() {
+    set -x
     if [[ ! -d /opt/environments/python ]]; then 
         export MAMBA_BASE=true
     fi
